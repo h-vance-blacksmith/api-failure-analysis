@@ -1,3 +1,5 @@
+[![Lint](https://github.com/harrison-vc/api-failure-analysis/actions/workflows/lint.yml/badge.svg)](https://github.com/harrison-vc/api-failure-analysis/actions/workflows/lint.yml)
+
 # api-failure-analysis
 
 A structured laboratory for analyzing common API failure modes. This repository provides an intentional failure lab to practice diagnosing HTTP errors and understanding root causes in distributed systems.
