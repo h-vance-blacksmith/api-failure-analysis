@@ -56,3 +56,10 @@ A structured laboratory for analyzing common API failure modes. This repository 
    # Test 500
    curl http://localhost:8000/api/v1/trigger-error
    ```
+
+## Quick Start (Docker)
+
+```bash
+docker build -t api-failure-lab .
+docker run -p 8000:8000 api-failure-lab
+```
