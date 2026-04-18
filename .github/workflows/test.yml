@@ -21,6 +21,7 @@ jobs:
           if [ -f app/requirements.txt ]; then pip install -r app/requirements.txt; fi
           pip install pytest httpx
       - name: Run tests
+        env:
+          PYTHONPATH: .
         run: |
-          # If tests exist, run them. If not, just echo success to pass CI.
-          if [ -d tests ]; then pytest; else echo "No tests found, skipping."; fi
+          pytest tests/
