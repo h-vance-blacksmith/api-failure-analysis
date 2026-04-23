@@ -6,7 +6,7 @@ A structured laboratory for analyzing common API failure modes. This repository 
 
 ## Failure Classification
 
-| Status Code | Type | Common Support Root Causes |
+| Status Code | Type | Common Operational Root Causes |
 | ----------- | ---- | -------------------------- |
 | **401** | Unauthorized | Invalid API key, expired token, or missing header. |
 | **403** | Forbidden | Valid token but insufficient permissions (e.g., scoping issue). |
