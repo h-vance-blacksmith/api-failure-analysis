@@ -1,0 +1,5 @@
+^https?://localhost.*$
+^https?://<.*$
+^https?://api\.internal\.corp/.*$
+^https?://api\.corp\.com/.*$
+^https?://api\.thirdparty\.com/.*$

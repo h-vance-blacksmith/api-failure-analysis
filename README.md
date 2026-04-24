@@ -46,8 +46,9 @@ A structured laboratory for analyzing common API failure modes. This repository 
 
 ## Practice Lab
 
-1. Launch the lab: `python app/api.py`
-2. Test scenarios using `curl`:
+1. Install dependencies: `pip install -r app/requirements.txt`
+2. Launch the lab: `python app/api.py`
+3. Test scenarios using `curl`:
    ```bash
    # Test 401
    curl -X POST http://localhost:8000/login -d '{"username": "admin", "password": "wrong-password"}'

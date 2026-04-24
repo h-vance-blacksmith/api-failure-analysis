@@ -1,6 +1,6 @@
+import asyncio
 import os
 import random
-import time
 
 from fastapi import FastAPI, Header, HTTPException, Request
 
@@ -16,7 +16,7 @@ async def simulate_system_load(request: Request, call_next):
     """Middleware to inject random failure modes for analysis."""
     if os.getenv("SIMULATE_FLAKY_NETWORK") == "true":
         if random.random() < 0.2:
-            time.sleep(10)  # Simulate a long network delay
+            await asyncio.sleep(10)  # Simulate a long network delay
 
     response = await call_next(request)
     return response
@@ -77,7 +77,7 @@ async def trigger_error():
 @app.get("/api/v1/external-call")
 async def external_call():
     """Simulates an external call that times out."""
-    time.sleep(15)  # Simulate long upstream processing
+    await asyncio.sleep(15)  # Simulate long upstream processing
     return {"status": "success"}
 
 
