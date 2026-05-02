@@ -5,9 +5,9 @@ A structured laboratory for analyzing common API failure modes in distributed sy
 [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
-[![API](https://img.shields.io/badge/API-green?style=for-the-badge)](https://en.wikipedia.org/wiki/API)
-[![HTTP](https://img.shields.io/badge/HTTP-blue?style=for-the-badge)](https://en.wikipedia.org/wiki/HTTP)
-[![DevOps](https://img.shields.io/badge/DevOps-007ACC?style=for-the-badge)](https://en.wikipedia.org/wiki/DevOps)
+[![API](https://img.shields.io/badge/API-green?style=for-the-badge&logo=postman&logoColor=white)](https://en.wikipedia.org/wiki/API)
+[![HTTP](https://img.shields.io/badge/HTTP-blue?style=for-the-badge&logo=httpie&logoColor=white)](https://en.wikipedia.org/wiki/HTTP)
+[![DevOps](https://img.shields.io/badge/DevOps-007ACC?style=for-the-badge&logo=azuredevops&logoColor=white)](https://en.wikipedia.org/wiki/DevOps)
 
 ## Failure Mode Classification
 
