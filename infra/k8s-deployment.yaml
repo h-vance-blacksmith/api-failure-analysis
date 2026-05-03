@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: api-analysis
-        image: harrison-vc/api-failure-analysis:latest
+        image: h-vance/api-failure-analysis:latest
         ports:
         - containerPort: 8000
         resources:
