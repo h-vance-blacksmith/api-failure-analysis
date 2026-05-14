@@ -1,22 +1,46 @@
-<center>
-<h1>Api Failure Analysis</h1>
-<p><em>Advanced diagnostics and resolution patterns for complex API failures and distributed system outages.</em></p>
+# API Failure Analysis
 
----
+> **Advanced diagnostics and resolution patterns for complex API failures and distributed system outages.**
 
-<h1>Api Failure Analysis</h1>
+## Overview
 
+A practical toolkit for diagnosing API failures in production environments. Includes a Flask-based failure simulation API, common error documentation, and automated test suites for validating endpoint behavior under fault conditions.
 
-| **403** | Forbidden | Valid token but insufficient permissions or restricted resource access. |
-| **404** | Not Found | Resource deleted, incorrect endpoint path, or DNS propagation delay. |
-| **500** | Internal Error | Application crash, unhandled exceptions, or database disconnection. |
-| **504** | Gateway Timeout | Upstream service latency or Load Balancer timeout exceeded. |
+## Structure
 
-
-
-
-docker run -p 8000:8000 api-failure-lab
+```
+.
+├── app/
+│   └── api.py                  # Flask API with failure simulation endpoints
+├── docs/
+│   └── Common_Errors.md        # Catalog of common API failure patterns and fixes
+├── scripts/
+│   └── simulate-failures.sh    # Bash script for triggering failure scenarios
+├── tests/
+│   ├── conftest.py             # Pytest fixtures
+│   └── test_endpoints.py       # Endpoint validation tests
+├── infra/
+│   └── k8s-deployment.yaml     # Kubernetes deployment manifest
+└── Dockerfile                  # Container build
 ```
 
-- `scripts/`: Helper scripts for automated testing and scenario triggering.
-- `tests/`: Pytest suite to verify failure mode detection.
+## Use Cases
+
+- **Incident Triage:** Reproduce reported API failures in a controlled environment before escalating to engineering.
+- **Pattern Recognition:** Reference `Common_Errors.md` during live troubleshooting to identify known failure signatures.
+- **Regression Testing:** Run `test_endpoints.py` after deployments to validate endpoint health.
+
+## Getting Started
+
+```bash
+pip install -r app/requirements.txt
+python app/api.py
+```
+
+Run tests:
+```bash
+pytest tests/
+```
+
+---
+*Maintained by Harrison Vance — Technical Support & Operations*
