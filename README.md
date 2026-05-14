@@ -8,7 +8,7 @@ A practical toolkit for diagnosing API failures in production environments. Incl
 
 ## Structure
 
-```
+```text
 .
 ├── app/
 │   └── api.py                  # Flask API with failure simulation endpoints
@@ -43,4 +43,4 @@ pytest tests/
 ```
 
 ---
-*Maintained by Harrison Vance — Technical Support & Operations*
+Maintained by Harrison Vance — Technical Support & Operations
