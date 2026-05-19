@@ -44,4 +44,4 @@ Once you submit your ticket with the details above, here is our promise to you:
 
 ---
 
-**Still stuck?** [Click here to open a Support Ticket] and paste the details you gathered above. We've got your back!
+**Still stuck?** [Open a Support Ticket](https://github.com/h-vance) and paste the details you gathered above. We've got your back!

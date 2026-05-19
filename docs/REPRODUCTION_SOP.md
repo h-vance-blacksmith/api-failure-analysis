@@ -81,3 +81,6 @@ Once Engineering provides a fix:
 1. **Verify** the fix in a staging/sandbox environment.
 2. **Update the KB**: If this was a common point of confusion, draft a Knowledge Base article to prevent future tickets.
 3. **Notify the User**: Communicate the resolution with empathy and clarity.
+4. **References**:
+   - [Knowledge Base Guide](./KB_TROUBLESHOOTING_GUIDE.md) for customer-facing templates.
+   - [Project Repository](https://github.com/h-vance/api-failure-analysis) for the latest updates.
