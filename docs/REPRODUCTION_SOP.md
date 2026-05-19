@@ -69,9 +69,9 @@ When handing off to Engineering, use this format to ensure they don't send it ba
 **3. Expected Behavior:** {What should happen}
 **4. Actual Behavior:** {What happened instead}
 **5. Evidence:**
-   - **Request ID:** `req_12345abcde`
-   - **Browser Logs:** {Paste snippet or link to HAR}
-   - **Server Logs:** {Link to Datadog/Splunk search}
+- **Request ID:** `req_12345abcde`
+- **Browser Logs:** {Paste snippet or link to HAR}
+- **Server Logs:** {Link to Datadog/Splunk search}
 **6. Potential Root Cause (Optional):** {Your T2 hypothesis based on isolation steps}
 
 ---

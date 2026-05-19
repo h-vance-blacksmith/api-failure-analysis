@@ -5,7 +5,7 @@
 
 ---
 
-## 👋 We're here to help!
+## 👋 We're here to help
 If you've encountered an "API Error," "Connection Failed," or "Unexpected Behavior" message, we know how frustrating that can be. This guide will walk you through a few quick steps to get things back on track.
 
 ### 1. The Quick Fix Checklist
@@ -20,7 +20,7 @@ Before reaching out, try these three steps that resolve 80% of common issues:
 If the quick fixes didn't work, our Support team will need a little "detective work" from your side to find the root cause. Providing these three things in your first message can save hours of back-and-forth!
 
 ### A. The "Full Screen" Screenshot
-Instead of just the error message, please take a screenshot of your **entire browser window**. 
+Instead of just the error message, please take a screenshot of your **entire browser window**.
 - **Why?** It helps us see the URL, any other open tabs that might be relevant, and the exact placement of the error.
 
 ### B. The Browser "Inspector" (For advanced help)
