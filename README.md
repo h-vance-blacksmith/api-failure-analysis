@@ -1,4 +1,4 @@
-# 🛠️ Technical Support API Diagnostic Suite
+# Technical Support API Diagnostic Suite
 
 An open-source Python diagnostic CLI and Postman collection engineered for modern Customer Experience (CX) and Support teams to automate API endpoint health checks, capture raw HTTP headers, and isolate client-side vs. server-side bugs in seconds.
 
