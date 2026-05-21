@@ -8,7 +8,7 @@ An open-source Python diagnostic CLI and Postman collection engineered for moder
 
 ---
 
-## 🎯 Recruiter Cheatsheet: Why This Project Matters
+## Recruiter Cheatsheet: Why This Project Matters
 If you are looking at my profile for a **Technical Support Specialist** or **Support Engineer** role, here is what this project demonstrates about my skills:
 * **API Literacy:** Proves deep, practical understanding of REST APIs, payloads, headers, query parameters, and webhooks.
 * **Support Automation:** Shows my ability to write Python tools that eliminate manual triage, lowering MTTR.
@@ -16,7 +16,7 @@ If you are looking at my profile for a **Technical Support Specialist** or **Sup
 
 ---
 
-## 🚀 Quick Start: "How to Use" (Recruiter Edition)
+## Quick Start: "How to Use" (Recruiter Edition)
 
 This tool is designed to be extremely easy to use. Support agents or recruiters can run it to analyze any failing API call with a single command.
 
@@ -57,7 +57,7 @@ Triage Rule: MISSING_REQUIRED_PAYLOAD_FIELD
 
 ---
 
-## 🛠️ Key Features & Technical Details
+## Key Features & Technical Details
 
 1. **Auto-Triage for Common API Errors:**
    * **400 Bad Request:** Scans JSON payloads for syntax errors or missing required fields.
@@ -73,7 +73,7 @@ Triage Rule: MISSING_REQUIRED_PAYLOAD_FIELD
 
 ---
 
-## 📥 Installation & Getting Started
+## Installation & Getting Started
 
 ```bash
 # Clone the repository
@@ -96,6 +96,6 @@ pytest tests/
 
 ---
 
-## 📄 License & Maintainer
+## License & Maintainer
 * **License:** MIT License - see the [LICENSE](LICENSE) file for details.
 * **Maintainer:** Harrison Vance | Technical Support & Operations
