@@ -1,12 +1,17 @@
 # API Failure Analysis
 
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen?logo=render)](https://aws-bedrock-ops-agent.onrender.com)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue?logo=python)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green)](https://github.com/h-vance/api-failure-analysis)
+
 > **Production-style API failure lab with correlated logs, replayable incidents, and webhook debugging — designed to feed evidence into an AI triage copilot.**
 
-Part of the [Ops Support Demo](https://github.com/h-vance/ops-support-demo) portfolio.
+Part of the [Ops Support Demo](https://aws-bedrock-ops-agent.onrender.com/) portfolio.
 
 ## Overview
 
-A FastAPI-based failure simulation lab for diagnosing API failures in production environments. Includes seeded replayable incidents, structured JSON logging with trace IDs, webhook debugging, and an evidence bundle endpoint that feeds the [aws-bedrock-agent](https://github.com/h-vance/aws-bedrock-agent) triage copilot.
+A FastAPI-based failure simulation lab for diagnosing API failures in production environments. Includes seeded replayable incidents, structured JSON logging with trace IDs, webhook debugging, and an evidence bundle endpoint that feeds the [aws-bedrock-ops-agent](https://github.com/h-vance/aws-bedrock-ops-agent) triage copilot.
 
 ## Structure
 
@@ -23,22 +28,22 @@ A FastAPI-based failure simulation lab for diagnosing API failures in production
 │   │   └── INC-003-upstream-timeout.json
 │   └── requirements.txt
 ├── scripts/
-│   └── simulate-failures.sh    # Bash script for triggering failure scenarios
+│   └── simulate-failures.sh
 ├── tests/
-│   ├── conftest.py             # Pytest fixtures
-│   └── test_endpoints.py       # Endpoint validation tests
+│   ├── conftest.py
+│   └── test_endpoints.py
 ├── infra/
-│   └── k8s-deployment.yaml     # Kubernetes deployment manifest
-└── Dockerfile                  # Container build
+│   └── k8s-deployment.yaml
+└── Dockerfile
 ```
 
-## Use Cases
+## Features
 
 - **Incident Triage:** Reproduce reported API failures in a controlled environment before escalating to engineering.
 - **Pattern Recognition:** Reference seeded scenarios during live troubleshooting to identify known failure signatures.
 - **Evidence Bundles:** Export structured incident JSON for engineering escalations and AI triage.
 
-## Getting Started
+## Quickstart
 
 ```bash
 pip install -r app/requirements.txt
@@ -54,9 +59,8 @@ Environment variables:
 | `EXTERNAL_DELAY_SECONDS` | `15` | Simulated upstream latency for `/api/v1/external-call` |
 | `LOG_LEVEL` | `INFO` | Python log level (`DEBUG`, `INFO`, `WARNING`) |
 
-Note: CORS is pre-configured to accept requests from `http://localhost:8080` and `http://127.0.0.1:8080` (the debug console). For production, update `allow_origins` in `app/api.py`.
-
 Run tests:
+
 ```bash
 pip install pytest httpx
 pytest tests/
@@ -81,15 +85,16 @@ pytest tests/
 | POST | `/webhooks/inbound` | Accept webhook with optional HMAC validation |
 | GET | `/webhooks/inbox` | List recent webhook deliveries |
 
+## CORS
+
+Pre-configured `CORSMiddleware` allowing `http://localhost:8080` and `http://127.0.0.1:8080`. Update `allow_origins` when deploying under a custom domain.
+
 ## Related
 
-- [aws-bedrock-agent](https://github.com/h-vance/aws-bedrock-ops-agent) — triage copilot over incident evidence ([live demo](https://aws-bedrock-ops-agent.onrender.com))
+- [aws-bedrock-ops-agent](https://github.com/h-vance/aws-bedrock-ops-agent) — triage copilot over incident evidence ([live demo](https://aws-bedrock-ops-agent.onrender.com))
 - [cloud-operations-runbook](https://github.com/h-vance/cloud-operations-runbook) — runbooks linked to each scenario
 - [ops-support-demo](https://github.com/h-vance/ops-support-demo) — umbrella docker-compose demo
 
----
-Maintained by Harrison Vance — Technical Support & Operations
+## License
 
-## CORS
-
-Both APIs include pre-configured `CORSMiddleware` allowing `http://localhost:8080` and `http://127.0.0.1:8080` (the debug console). Update `allow_origins` when deploying under a custom domain.
+MIT
