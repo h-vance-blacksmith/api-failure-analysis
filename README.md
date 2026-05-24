@@ -1,8 +1,8 @@
 # API Failure Analysis
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-000000?style=for-the-badge&logo=Render&logoColor=FFFFFF)](https://aws-bedrock-ops-agent.onrender.com)
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=FFFFFF)](https://fastapi.tiangolo.com)
-[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=FFFFFF)](https://python.org)
+[![Live Demo](https://www.shieldcn.dev/badge/Live%20Demo-000000.svg?variant=default&logo=Render&logoColor=FFFFFF&size=xs)](https://aws-bedrock-ops-agent.onrender.com)
+[![FastAPI](https://www.shieldcn.dev/badge/FastAPI-009688.svg?variant=default&logo=FastAPI&logoColor=FFFFFF&size=xs)](https://fastapi.tiangolo.com)
+[![Python](https://www.shieldcn.dev/badge/Python-3776AB.svg?variant=default&logo=Python&logoColor=FFFFFF&size=xs)](https://python.org)
 
 > **Production-style API failure lab with correlated logs, replayable incidents, and webhook debugging — designed to feed evidence into an AI triage copilot.**
 
