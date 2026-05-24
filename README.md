@@ -52,7 +52,7 @@ python app/api.py
 Environment variables:
 
 | Variable | Default | Description |
-|----------|---------|-------------|
+| ---------- | --------- | ------------- |
 | `WEBHOOK_MODE` | `valid` | `valid`, `bad_signature`, or `slow_ack` |
 | `SIMULATE_FLAKY_NETWORK` | `false` | Injects random latency |
 | `EXTERNAL_DELAY_SECONDS` | `15` | Simulated upstream latency for `/api/v1/external-call` |
@@ -68,7 +68,7 @@ pytest tests/
 ## API Endpoints
 
 | Method | Path | Description |
-|--------|------|-------------|
+| ------- | ------ | ------------- |
 | GET | `/health` | Health check |
 | GET | `/d/headers` | Echo inbound headers (debug teaching) |
 | GET | `/metrics` | Request counters by status |

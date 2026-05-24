@@ -3,7 +3,7 @@
 All responses include `X-Request-ID` and `X-Trace-ID` headers for correlation. See `GET /d/headers` to inspect inbound headers.
 
 | Code | Endpoint | Trigger | Response | Trace Example |
-|------|----------|---------|----------|---------------|
+| ------ | ---------- | --------- | ---------- | --------------- |
 | **401** | `GET /api/v1/data` | No `Authorization` header sent | `{"detail":"Authorization header missing"}` | `tx-001` |
 | **403** | `GET /api/v1/data` | Token valid but lacks admin scope | `{"detail":"Insufficient permissions — admin role required"}` | `tx-002` |
 | **404** | `GET /api/v1/resource/{id}` | Resource ID doesn't exist | `{"detail":"Resource 999 not found"}` | `tx-004` |

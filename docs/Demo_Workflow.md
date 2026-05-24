@@ -37,7 +37,7 @@ Link the [cloud-operations-runbook IAM runbook](https://github.com/h-vance/cloud
 ## Scenario Reference
 
 | Scenario | Trigger | What to Show |
-|----------|---------|-------------|
+| ---------- | --------- | ------------- |
 | INC-001 | Missing/stale auth token | Timeline → logs → replay → evidence bundle |
 | INC-002 | Webhook without HMAC signature | POST /webhooks/inbound → inspect inbox |
 | INC-003 | Upstream timeout | long delay → client vs server mismatch |
