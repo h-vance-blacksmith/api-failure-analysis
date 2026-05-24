@@ -1,0 +1,26 @@
+{
+  "summary": "Upstream API timeout — client times out at 30s while server continues processing for 45s, causing orphaned state",
+  "timeline": [
+    {"ts": "2025-03-05T22:15:00Z", "event": "Client A calls GET /api/v1/external-call", "trace_id": "tx-to-001"},
+    {"ts": "2025-03-05T22:15:05Z", "event": "Server accepts request, begins upstream processing", "trace_id": "tx-to-001"},
+    {"ts": "2025-03-05T22:15:35Z", "event": "Client A hits 30s timeout, closes connection", "trace_id": "tx-to-001"},
+    {"ts": "2025-03-05T22:15:50Z", "event": "Server finishes processing (45s), cannot write to closed connection", "trace_id": "tx-to-001"},
+    {"ts": "2025-03-05T22:15:51Z", "event": "Server logs 'client disconnected (broken pipe)'", "trace_id": "tx-to-001"},
+    {"ts": "2025-03-05T22:16:00Z", "event": "Client B same request — also times out", "trace_id": "tx-to-002"}
+  ],
+  "log_lines": [
+    {"level": "WARNING", "message": "External call: simulating 15s upstream delay", "trace_id": "tx-to-001"},
+    {"level": "INFO", "message": "GET /api/v1/external-call -> 200 (15000ms)", "trace_id": "tx-to-001"},
+    {"level": "WARNING", "message": "External call: simulating 15s upstream delay", "trace_id": "tx-to-002"}
+  ],
+  "request_samples": [
+    {"method": "GET", "path": "/api/v1/external-call", "status": 200},
+    {"method": "GET", "path": "/api/v1/external-call", "status": 200}
+  ],
+  "related_endpoints": ["/api/v1/external-call", "/health"],
+  "replay_steps": [
+    {"description": "Trigger upstream timeout (client must timeout < server delay)", "command": "timeout 5 curl -s http://localhost:8000/api/v1/external-call || echo 'TIMEOUT (expected)'", "expected_status": null},
+    {"description": "Check health after timeout", "command": "curl -s http://localhost:8000/health", "expected_status": 200},
+    {"description": "View request metrics", "command": "curl -s http://localhost:8000/metrics", "expected_status": 200}
+  ]
+}

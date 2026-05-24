@@ -1,0 +1,34 @@
+{
+  "summary": "Auth cascade after token rotation — missing Bearer token triggers 401, retry with stale token yields 403 across downstream services",
+  "timeline": [
+    {"ts": "2025-01-15T09:58:00Z", "event": "Scheduled token rotation deployed", "trace_id": "n/a"},
+    {"ts": "2025-01-15T09:59:00Z", "event": "Client A's active session invalidated", "trace_id": "tx-001"},
+    {"ts": "2025-01-15T09:59:02Z", "event": "GET /api/v1/data — no Authorization header (401)", "trace_id": "tx-001"},
+    {"ts": "2025-01-15T09:59:05Z", "event": "POST /login with cached credentials — success, new token issued", "trace_id": "tx-002"},
+    {"ts": "2025-01-15T09:59:08Z", "event": "GET /api/v1/data with new token (200)", "trace_id": "tx-002"},
+    {"ts": "2025-01-15T09:59:10Z", "event": "Client B retries with old token (403)", "trace_id": "tx-003"},
+    {"ts": "2025-01-15T09:59:15Z", "event": "Client C receives 401, retries 4 times, rate-limited", "trace_id": "tx-004"}
+  ],
+  "log_lines": [
+    {"level": "WARNING", "message": "Data request: missing Authorization header", "trace_id": "tx-001"},
+    {"level": "WARNING", "message": "Data request: invalid token 'old-toke...'", "trace_id": "tx-003"},
+    {"level": "INFO", "message": "Data request: authorized", "trace_id": "tx-002"},
+    {"level": "WARNING", "message": "Login failed: wrong password for 'admin'", "trace_id": "tx-001"},
+    {"level": "ERROR", "message": "Client C rate-limited after 4 retries", "trace_id": "tx-004"}
+  ],
+  "request_samples": [
+    {"method": "GET", "path": "/api/v1/data", "status": 401},
+    {"method": "POST", "path": "/login", "status": 401},
+    {"method": "GET", "path": "/api/v1/data", "status": 403},
+    {"method": "POST", "path": "/login", "status": 200},
+    {"method": "GET", "path": "/api/v1/data", "status": 200}
+  ],
+  "related_endpoints": ["/login", "/api/v1/data", "/api/v1/resource/{id}"],
+  "replay_steps": [
+    {"description": "Request data without auth token", "command": "curl -s -o /dev/null -w '%{http_code}' http://localhost:8000/api/v1/data", "expected_status": 401},
+    {"description": "Login with wrong password", "command": "curl -s -X POST http://localhost:8000/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\":\"wrong\"}'", "expected_status": 401},
+    {"description": "Request data with invalid token", "command": "curl -s -H 'Authorization: Bearer invalid-token' http://localhost:8000/api/v1/data", "expected_status": 403},
+    {"description": "Login with valid credentials", "command": "curl -s -X POST http://localhost:8000/login -H 'Content-Type: application/json' -d '{\"username\":\"admin\",\"password\":\"password123\"}'", "expected_status": 200},
+    {"description": "Request data with valid token", "command": "curl -s -H 'Authorization: Bearer valid-token-xyz' http://localhost:8000/api/v1/data", "expected_status": 200}
+  ]
+}

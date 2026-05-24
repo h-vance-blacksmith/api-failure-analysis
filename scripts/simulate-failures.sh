@@ -2,7 +2,7 @@
 # simulate-failures.sh
 # Automates the testing of API failure modes to verify troubleshooting scripts.
 
-BASE_URL # Target environment="http://localhost:8000"
+BASE_URL="${BASE_URL:-http://localhost:8000}"
 
 echo "=== Starting API Failure Simulation ==="
 

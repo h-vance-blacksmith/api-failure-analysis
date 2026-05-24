@@ -1,0 +1,27 @@
+{
+  "summary": "Webhook signature validation failure — partner POSTs order.shipped event with incorrect HMAC-SHA256 signature",
+  "timeline": [
+    {"ts": "2025-02-10T14:30:00Z", "event": "Partner 'AcmeCorp' sends order.shipped webhook", "trace_id": "tx-wh-001"},
+    {"ts": "2025-02-10T14:30:01Z", "event": "Webhook received: X-Signature header missing", "trace_id": "tx-wh-001"},
+    {"ts": "2025-02-10T14:30:02Z", "event": "Signature validation: FAILED — expected sha256 HMAC", "trace_id": "tx-wh-001"},
+    {"ts": "2025-02-10T14:30:03Z", "event": "Webhook rejected, 400 returned to partner", "trace_id": "tx-wh-001"},
+    {"ts": "2025-02-10T14:31:00Z", "event": "Partner retries with hash instead of HMAC — fails again", "trace_id": "tx-wh-002"},
+    {"ts": "2025-02-10T14:35:00Z", "event": "On-call paged: 'webhook delivery failing for AcmeCorp'", "trace_id": "n/a"}
+  ],
+  "log_lines": [
+    {"level": "WARNING", "message": "Webhook rejected: bad signature (got='none')", "trace_id": "tx-wh-001"},
+    {"level": "WARNING", "message": "Webhook rejected: bad signature (got='sha256=plain-hash')", "trace_id": "tx-wh-002"},
+    {"level": "INFO", "message": "Webhook accepted: event=order.shipped", "trace_id": "tx-wh-003"}
+  ],
+  "request_samples": [
+    {"method": "POST", "path": "/webhooks/inbound", "status": 400},
+    {"method": "POST", "path": "/webhooks/inbound", "status": 400},
+    {"method": "POST", "path": "/webhooks/inbound", "status": 200}
+  ],
+  "related_endpoints": ["/webhooks/inbound", "/webhooks/inbox"],
+  "replay_steps": [
+    {"description": "Send webhook without signature header", "command": "curl -s -X POST http://localhost:8000/webhooks/inbound -H 'Content-Type: application/json' -d '{\"event\":\"order.shipped\",\"order_id\":\"ORD-123\"}'", "expected_status": 200},
+    {"description": "Check webhook inbox for rejection details", "command": "curl -s http://localhost:8000/webhooks/inbox | python3 -m json.tool", "expected_status": 200},
+    {"description": "Set WEBHOOK_MODE=bad_signature and retry", "command": "WEBHOOK_MODE=bad_signature curl -s -X POST http://localhost:8000/webhooks/inbound -H 'Content-Type: application/json' -d '{\"event\":\"order.shipped\",\"order_id\":\"ORD-123\"}'", "expected_status": 200}
+  ]
+}
