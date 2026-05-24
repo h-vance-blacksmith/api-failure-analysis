@@ -10,9 +10,8 @@ from datetime import datetime, timezone
 
 from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
-from incidents.store import load as load_seed_incident, get_by_id as get_incident_by_id
+
 
 LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 WEBHOOK_MODE = os.getenv("WEBHOOK_MODE", "valid")
@@ -219,7 +218,7 @@ async def webhook_inbound(request: Request, x_signature: str = Header(None)):
     }
 
     if WEBHOOK_MODE == "bad_signature":
-        expected = f"sha256=expected-hmac-value"
+        expected = "sha256=expected-hmac-value"
         is_valid = x_signature == expected
         delivery["valid"] = is_valid
         delivery["status"] = "accepted" if is_valid else "rejected"

@@ -1,6 +1,4 @@
 from fastapi.testclient import TestClient
-import json
-import os
 
 import sys
 sys.path.insert(0, "app")
@@ -143,7 +141,7 @@ def test_webhook_inbound_valid():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "accepted"
-    assert data["valid"] == True
+    assert data["valid"]
 
 
 def test_webhook_inbox():
